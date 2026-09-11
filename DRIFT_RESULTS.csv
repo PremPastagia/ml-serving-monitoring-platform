@@ -1,0 +1,8 @@
+scenario,kind,expect_drift,trials,input_drift_detection_rate,input_drift_false_positive_rate,prediction_drift_detection_rate,mean_drifted_features,mean_schema_failures,mean_max_psi,mean_detection_seconds,mean_roc_auc,roc_auc_delta_vs_no_drift,scorable,detection_latency_windows_mean,detection_latency_windows_max,latency_trials,never_detected,baseline_roc_auc
+no_drift,none,False,30,0.0,0.0,0.0,0.0,0.0,0.0482,0.14766,0.926009,0.0,True,,,10,10,0.9260086000000001
+small_drift,covariate,False,30,0.0,0.0,0.0,0.0,0.0,0.1211,0.09946,0.925124,-0.000885,True,,,10,10,0.9260086000000001
+large_drift,covariate,True,30,1.0,,1.0,4.0,0.0,6.1888,0.22072,0.873318,-0.052691,True,1.0,1.0,10,0,0.9260086000000001
+missing_feature,schema,True,30,1.0,,,0.0,2.0,0.0482,0.07132,,,False,1.0,1.0,10,0,0.9260086000000001
+performance_drift,concept,True,30,0.0,,0.0,0.0,0.0,0.0482,0.08889,0.639065,-0.286944,True,,,10,10,0.9260086000000001
+covariate_shift,covariate,True,30,1.0,,0.8,2.0,0.0,3.0466,0.10515,0.907586,-0.018422,True,1.0,1.0,10,0,0.9260086000000001
+prior_shift,prior,True,30,0.0,,1.0,0.0,0.0,0.106,0.14134,0.927974,0.001965,True,,,10,10,0.9260086000000001

@@ -1,0 +1,9 @@
+# Training, tracking, experiment and CI dependencies, on top of the runtime set.
+-r requirements.txt
+mlflow==3.6.0
+pytest==9.1.1
+ruff==0.16.7
+black==26.5.1
+httpx==0.28.1
+matplotlib==3.11.1
+pyarrow==22.0.0

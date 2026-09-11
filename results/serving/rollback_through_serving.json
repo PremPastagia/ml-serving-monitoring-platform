@@ -1,0 +1,112 @@
+{
+  "registry_versions": [
+    "1",
+    "2"
+  ],
+  "original_production_version": "1",
+  "switched_to_version": "2",
+  "promotion": {
+    "label": "promote",
+    "served_before": "1",
+    "served_after": "2",
+    "changed": true,
+    "registry_alias_seconds": 0.00994,
+    "reload_seconds": 0.036821,
+    "end_to_end_seconds": 0.063321,
+    "registry_result": {
+      "changed": true,
+      "alias": "production",
+      "from": "1",
+      "to": "2",
+      "seconds": 0.007981
+    },
+    "reload_result": {
+      "ok": true,
+      "from_version": "1",
+      "to_version": "2",
+      "changed": true,
+      "seconds": 0.036821,
+      "error": null
+    },
+    "switch_window": {
+      "start": 4437.231931,
+      "end": 4437.295252
+    },
+    "traffic_during_switch": {
+      "requests": 14,
+      "succeeded": 14,
+      "failed": 0,
+      "failure_rate": 0.0,
+      "status_codes": {
+        "200": 14
+      },
+      "versions_observed": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "rollback": {
+    "label": "rollback",
+    "served_before": "2",
+    "served_after": "1",
+    "changed": true,
+    "registry_alias_seconds": 0.008306,
+    "reload_seconds": 0.056114,
+    "end_to_end_seconds": 0.08155,
+    "registry_result": {
+      "alias": "production",
+      "from": "2",
+      "to": "1",
+      "seconds": 0.004745
+    },
+    "reload_result": {
+      "ok": true,
+      "from_version": "2",
+      "to_version": "1",
+      "changed": true,
+      "seconds": 0.056114,
+      "error": null
+    },
+    "switch_window": {
+      "start": 4439.322579,
+      "end": 4439.404129
+    },
+    "traffic_during_switch": {
+      "requests": 18,
+      "succeeded": 18,
+      "failed": 0,
+      "failure_rate": 0.0,
+      "status_codes": {
+        "200": 18
+      },
+      "versions_observed": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "overall_traffic": {
+    "requests": 1119,
+    "succeeded": 1119,
+    "failed": 0,
+    "failure_rate": 0.0,
+    "status_codes": {
+      "200": 1119
+    },
+    "versions_observed": [
+      "1",
+      "2"
+    ]
+  },
+  "probe_interval_seconds": 0.0,
+  "probe_threads": 4,
+  "host_load_average": [
+    9.0029296875,
+    12.3310546875,
+    13.44677734375
+  ],
+  "final_production_version": "1",
+  "final_previous_alias": "2",
+  "rollback_verified_through_serving": true
+}

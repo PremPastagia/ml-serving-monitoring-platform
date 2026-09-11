@@ -1,0 +1,84 @@
+scenario,feature,kind,psi,statistic,p_value,test,drifted,severity,wasserstein,reference_mean,current_mean,reference_n,current_n,note
+no_drift,age,numeric,0.00595,0.0261,0.20260640867580237,ks_2samp,False,none,0.5696,38.5691,39.1085,10000,2000,
+no_drift,workclass,categorical,0.010294,8.468302,0.2931141001219376,chi2_homogeneity,False,none,,,,10000,2000,2 rare level(s) pooled into __rare__
+no_drift,education_num,numeric,0.010654,0.0244,0.26968099013850233,ks_2samp,False,none,0.1032,10.0847,10.0445,10000,2000,
+no_drift,marital_status,categorical,0.004039,7.372872,0.28773569848650254,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+no_drift,occupation,categorical,0.012114,21.875396,0.08121115306872481,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+no_drift,relationship,categorical,0.001583,2.551007,0.768794515176689,chi2_homogeneity,False,none,,,,10000,2000,
+no_drift,race,categorical,0.00131,2.034694,0.7293775271390337,chi2_homogeneity,False,none,,,,10000,2000,
+no_drift,sex,categorical,0.000383,0.634959,0.4255421992284255,chi2_homogeneity,False,none,,,,10000,2000,
+no_drift,capital_gain,numeric,0.000953,0.007,0.9999964108216935,ks_2samp,False,none,193.8701,1066.1346,872.2645,10000,2000,
+no_drift,capital_loss,numeric,0.001869,0.006,0.9999999774033403,ks_2samp,False,none,7.0317,85.4774,79.7625,10000,2000,
+no_drift,hours_per_week,numeric,0.021126,0.0122,0.9625755155124379,ks_2samp,False,none,0.3143,40.5022,40.6015,10000,2000,
+no_drift,native_country,categorical,0.032148,7.730488,0.8607043807642702,chi2_homogeneity,False,none,,,,10000,2000,29 rare level(s) pooled into __rare__
+small_drift,age,numeric,0.047633,0.0781,2.727033221500038e-09,ks_2samp,False,none,2.5369,38.5691,41.106,10000,2000,
+small_drift,workclass,categorical,0.010294,8.468302,0.2931141001219376,chi2_homogeneity,False,none,,,,10000,2000,2 rare level(s) pooled into __rare__
+small_drift,education_num,numeric,0.010654,0.0244,0.26968099013850233,ks_2samp,False,none,0.1032,10.0847,10.0445,10000,2000,
+small_drift,marital_status,categorical,0.004039,7.372872,0.28773569848650254,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+small_drift,occupation,categorical,0.012114,21.875396,0.08121115306872481,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+small_drift,relationship,categorical,0.001583,2.551007,0.768794515176689,chi2_homogeneity,False,none,,,,10000,2000,
+small_drift,race,categorical,0.00131,2.034694,0.7293775271390337,chi2_homogeneity,False,none,,,,10000,2000,
+small_drift,sex,categorical,0.000383,0.634959,0.4255421992284255,chi2_homogeneity,False,none,,,,10000,2000,
+small_drift,capital_gain,numeric,0.000953,0.007,0.9999964108216935,ks_2samp,False,none,193.8701,1066.1346,872.2645,10000,2000,
+small_drift,capital_loss,numeric,0.001869,0.006,0.9999999774033403,ks_2samp,False,none,7.0317,85.4774,79.7625,10000,2000,
+small_drift,hours_per_week,numeric,0.126931,0.0567,4.2357230240835025e-05,ks_2samp,False,warn,0.5721,40.5022,40.9615,10000,2000,
+small_drift,native_country,categorical,0.032148,7.730488,0.8607043807642702,chi2_homogeneity,False,none,,,,10000,2000,29 rare level(s) pooled into __rare__
+large_drift,age,numeric,2.960647,0.389,1.1948335032908761e-227,ks_2samp,True,alert,13.3429,38.5691,51.912,10000,2000,
+large_drift,workclass,categorical,0.036772,56.061676,9.181433583818818e-10,chi2_homogeneity,False,none,,,,10000,2000,2 rare level(s) pooled into __rare__
+large_drift,education_num,numeric,0.126609,0.1537,7.46995716587947e-35,ks_2samp,False,warn,0.8083,10.0847,10.893,10000,2000,
+large_drift,marital_status,categorical,0.014747,23.469671,0.0006535098446907692,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+large_drift,occupation,categorical,0.343218,621.700066,1.2763089261469358e-123,chi2_homogeneity,True,alert,,,,10000,2000,1 rare level(s) pooled into __rare__
+large_drift,relationship,categorical,0.030262,46.734682,6.434865580071255e-09,chi2_homogeneity,False,none,,,,10000,2000,
+large_drift,race,categorical,0.008004,10.957568,0.02704505303395472,chi2_homogeneity,False,none,,,,10000,2000,
+large_drift,sex,categorical,0.000304,0.5043,0.4776168082823291,chi2_homogeneity,False,none,,,,10000,2000,
+large_drift,capital_gain,numeric,0.283204,0.0759,8.474723968562904e-09,ks_2samp,True,alert,2106.3729,1066.1346,3172.5075,10000,2000,
+large_drift,capital_loss,numeric,0.005636,0.0149,0.8474897737519315,ks_2samp,False,none,29.7544,85.4774,113.925,10000,2000,
+large_drift,hours_per_week,numeric,6.634545,0.6909,0.0,ks_2samp,True,alert,13.6198,40.5022,54.122,10000,2000,
+large_drift,native_country,categorical,0.092491,31.704228,0.002656898981591669,chi2_homogeneity,False,none,,,,10000,2000,29 rare level(s) pooled into __rare__
+missing_feature,age,numeric,0.00595,0.0261,0.20260640867580237,ks_2samp,False,none,0.5696,38.5691,39.1085,10000,2000,
+missing_feature,workclass,categorical,0.010294,8.468302,0.2931141001219376,chi2_homogeneity,False,none,,,,10000,2000,2 rare level(s) pooled into __rare__
+missing_feature,education_num,numeric,0.010654,0.0244,0.26968099013850233,ks_2samp,False,none,0.1032,10.0847,10.0445,10000,2000,
+missing_feature,marital_status,categorical,0.004039,7.372872,0.28773569848650254,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+missing_feature,relationship,categorical,0.001583,2.551007,0.768794515176689,chi2_homogeneity,False,none,,,,10000,2000,
+missing_feature,race,categorical,0.00131,2.034694,0.7293775271390337,chi2_homogeneity,False,none,,,,10000,2000,
+missing_feature,sex,categorical,0.000383,0.634959,0.4255421992284255,chi2_homogeneity,False,none,,,,10000,2000,
+missing_feature,capital_gain,numeric,0.000953,0.007,0.9999964108216935,ks_2samp,False,none,193.8701,1066.1346,872.2645,10000,2000,
+missing_feature,capital_loss,numeric,0.001869,0.006,0.9999999774033403,ks_2samp,False,none,7.0317,85.4774,79.7625,10000,2000,
+missing_feature,hours_per_week,numeric,0.025014,0.017486,0.8404070347089856,ks_2samp,False,none,0.432029,40.5022,40.664286,10000,1400,
+missing_feature,native_country,categorical,0.032148,7.730488,0.8607043807642702,chi2_homogeneity,False,none,,,,10000,2000,29 rare level(s) pooled into __rare__
+performance_drift,age,numeric,0.00595,0.0261,0.20260640867580237,ks_2samp,False,none,0.5696,38.5691,39.1085,10000,2000,
+performance_drift,workclass,categorical,0.010294,8.468302,0.2931141001219376,chi2_homogeneity,False,none,,,,10000,2000,2 rare level(s) pooled into __rare__
+performance_drift,education_num,numeric,0.010654,0.0244,0.26968099013850233,ks_2samp,False,none,0.1032,10.0847,10.0445,10000,2000,
+performance_drift,marital_status,categorical,0.004039,7.372872,0.28773569848650254,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+performance_drift,occupation,categorical,0.012114,21.875396,0.08121115306872481,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+performance_drift,relationship,categorical,0.001583,2.551007,0.768794515176689,chi2_homogeneity,False,none,,,,10000,2000,
+performance_drift,race,categorical,0.00131,2.034694,0.7293775271390337,chi2_homogeneity,False,none,,,,10000,2000,
+performance_drift,sex,categorical,0.000383,0.634959,0.4255421992284255,chi2_homogeneity,False,none,,,,10000,2000,
+performance_drift,capital_gain,numeric,0.000953,0.007,0.9999964108216935,ks_2samp,False,none,193.8701,1066.1346,872.2645,10000,2000,
+performance_drift,capital_loss,numeric,0.001869,0.006,0.9999999774033403,ks_2samp,False,none,7.0317,85.4774,79.7625,10000,2000,
+performance_drift,hours_per_week,numeric,0.021126,0.0122,0.9625755155124379,ks_2samp,False,none,0.3143,40.5022,40.6015,10000,2000,
+performance_drift,native_country,categorical,0.032148,7.730488,0.8607043807642702,chi2_homogeneity,False,none,,,,10000,2000,29 rare level(s) pooled into __rare__
+covariate_shift,age,numeric,0.056851,0.0988,1.2866311615284386e-14,ks_2samp,False,none,2.5795,38.5691,41.143,10000,2000,
+covariate_shift,workclass,categorical,0.597257,1275.91772,2.6921266275817813e-271,chi2_homogeneity,True,alert,,,,10000,2000,2 rare level(s) pooled into __rare__
+covariate_shift,education_num,numeric,3.20764,0.5667,0.0,ks_2samp,True,alert,2.1563,10.0847,12.241,10000,2000,
+covariate_shift,marital_status,categorical,0.023747,39.177886,6.605284463363335e-07,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+covariate_shift,occupation,categorical,0.090095,156.119084,4.2721113521560257e-26,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+covariate_shift,relationship,categorical,0.024057,39.766485,1.664355086901233e-07,chi2_homogeneity,False,none,,,,10000,2000,
+covariate_shift,race,categorical,0.008713,13.393633,0.009504313701101108,chi2_homogeneity,False,none,,,,10000,2000,
+covariate_shift,sex,categorical,0.007694,12.527112,0.0004010893253310556,chi2_homogeneity,False,none,,,,10000,2000,
+covariate_shift,capital_gain,numeric,0.002054,0.0102,0.9944485294573933,ks_2samp,False,none,449.6239,1066.1346,1515.7585,10000,2000,
+covariate_shift,capital_loss,numeric,0.001621,0.0066,0.9999993768858404,ks_2samp,False,none,11.2688,85.4774,76.138,10000,2000,
+covariate_shift,hours_per_week,numeric,0.0716,0.091,1.835207516830254e-12,ks_2samp,False,none,2.5745,40.5022,43.0055,10000,2000,
+covariate_shift,native_country,categorical,0.123713,45.48069,8.522870919540491e-06,chi2_homogeneity,False,warn,,,,10000,2000,30 rare level(s) pooled into __rare__
+prior_shift,age,numeric,0.083897,0.1186,6.894437573461313e-21,ks_2samp,False,none,2.6933,38.5691,41.217,10000,2000,
+prior_shift,workclass,categorical,0.026135,37.397343,3.943793260426511e-06,chi2_homogeneity,False,none,,,,10000,2000,2 rare level(s) pooled into __rare__
+prior_shift,education_num,numeric,0.049557,0.0777,3.3595014749211725e-09,ks_2samp,False,none,0.4302,10.0847,10.5135,10000,2000,
+prior_shift,marital_status,categorical,0.086136,143.18003,2.1362772888289045e-28,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+prior_shift,occupation,categorical,0.053075,82.750028,8.714539807789993e-12,chi2_homogeneity,False,none,,,,10000,2000,1 rare level(s) pooled into __rare__
+prior_shift,relationship,categorical,0.087204,141.610401,8.134319937546504e-29,chi2_homogeneity,False,none,,,,10000,2000,
+prior_shift,race,categorical,0.004833,7.095373,0.1309332250906186,chi2_homogeneity,False,none,,,,10000,2000,
+prior_shift,sex,categorical,0.029108,46.108652,1.1187329213368935e-11,chi2_homogeneity,False,none,,,,10000,2000,
+prior_shift,capital_gain,numeric,0.036768,0.0506,0.00037801544316508714,ks_2samp,False,none,445.4512,1066.1346,1510.419,10000,2000,
+prior_shift,capital_loss,numeric,0.001713,0.0108,0.9889224178842757,ks_2samp,False,none,19.8079,85.4774,103.8425,10000,2000,
+prior_shift,hours_per_week,numeric,0.072181,0.0876,1.4026259847657358e-11,ks_2samp,False,none,2.0293,40.5022,42.5315,10000,2000,
+prior_shift,native_country,categorical,0.084619,10.763549,0.5492839637187084,chi2_homogeneity,False,none,,,,10000,2000,30 rare level(s) pooled into __rare__

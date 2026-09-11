@@ -1,0 +1,58 @@
+# Local composition: the serving API plus an MLflow tracking/registry server.
+#
+# NOT RUN OR MEASURED. No container runtime was available during development, so this
+# file is reviewed but untested. See docker/Dockerfile for the same caveat.
+
+name: mlserve
+
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.6.0
+    command: >
+      mlflow server
+      --host 0.0.0.0 --port 5000
+      --backend-store-uri sqlite:////mlflow/mlflow.db
+      --default-artifact-root /mlflow/mlruns
+    ports:
+      - "5000:5000"
+    volumes:
+      - ../mlflow.db:/mlflow/mlflow.db
+      - ../mlruns:/mlflow/mlruns
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:5000/health',timeout=4)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: mlserve:0.1.0
+    ports:
+      - "8077:8077"
+    environment:
+      # Read the model bundle from the mounted volume rather than the registry, so the
+      # API does not depend on MLflow being reachable to serve traffic. Switch to
+      # `registry` plus MLFLOW_TRACKING_URI to follow registry aliases instead.
+      MLSERVE_MODEL_SOURCE: file
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    volumes:
+      # Read-only: the serving container has no reason to be able to modify the model
+      # it is serving.
+      - ../artifacts:/app/artifacts:ro
+    depends_on:
+      mlflow:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys,urllib.request;sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8077/ready',timeout=4).status==200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 1G

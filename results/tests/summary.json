@@ -1,0 +1,70 @@
+{
+  "total": 418,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 132.496,
+  "seconds_on_idle_machine": 56.65,
+  "by_file": [
+    {
+      "file": "test_validation.py",
+      "tests": 78,
+      "seconds": 0.33
+    },
+    {
+      "file": "test_api_errors.py",
+      "tests": 74,
+      "seconds": 0.76
+    },
+    {
+      "file": "test_drift.py",
+      "tests": 54,
+      "seconds": 0.64
+    },
+    {
+      "file": "test_monitoring.py",
+      "tests": 40,
+      "seconds": 0.63
+    },
+    {
+      "file": "test_failure_injection.py",
+      "tests": 30,
+      "seconds": 1.0
+    },
+    {
+      "file": "test_retraining.py",
+      "tests": 28,
+      "seconds": 117.97
+    },
+    {
+      "file": "test_api.py",
+      "tests": 26,
+      "seconds": 2.61
+    },
+    {
+      "file": "test_registry.py",
+      "tests": 23,
+      "seconds": 4.41
+    },
+    {
+      "file": "test_features.py",
+      "tests": 21,
+      "seconds": 0.14
+    },
+    {
+      "file": "test_training.py",
+      "tests": 18,
+      "seconds": 2.73
+    },
+    {
+      "file": "test_split.py",
+      "tests": 16,
+      "seconds": 0.35
+    },
+    {
+      "file": "test_schema_contract.py",
+      "tests": 10,
+      "seconds": 0.0
+    }
+  ]
+}

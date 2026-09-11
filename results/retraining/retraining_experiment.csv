@@ -1,0 +1,5 @@
+case,triggered,trigger_reason,drift_detected,n_drifted_features,n_schema_failures,decision,failed_criteria,incumbent_version,candidate_version,promoted_version,incumbent_roc_auc,candidate_roc_auc,roc_auc_delta,candidate_p95_latency_ms,retraining_seconds,total_seconds,promotion_seconds,error,registry_production_after,rollback_seconds,registry_alias_seconds,previous_alias_after,restored_incumbent
+no_drift,False,no drift detected; retraining not required,False,0.0,0.0,,,,,,,,,,0.0,0.061,,,1,,,,
+reject_no_gain,True,"drift detected: 4 feature(s) alerted, 0 schema failure(s)",True,4.0,0.0,reject,min_absolute_improvement,1,2,,0.926784,0.926784,0.0,8.5553,1.08,5.453,,,1,,,,
+promote_better,True,"drift detected: 4 feature(s) alerted, 0 schema failure(s)",True,4.0,0.0,promote,,1,2,2,0.897678,0.926784,0.029106,21.8574,1.246,9.255,0.004252,,2,,,,
+rollback_after_promotion,True,explicit rollback after promotion,,,,rollback,,1,2,1,,,,,,,,,1,0.005478,0.004162,2,True

@@ -81,6 +81,9 @@ drift:
   psi_alert: 0.25
   ks_alpha: 0.01
   chi2_alpha: 0.01
+  # Relative change in the mean predicted probability that counts as output drift,
+  # independently of PSI. Catches prior shift, which the shape test measurably misses.
+  prediction_mean_shift_alert: 0.25
   n_bins: 10
   # A dataset is declared drifted when at least this many features alert.
   min_drifted_features: 1
@@ -92,6 +95,13 @@ retraining:
   min_absolute_improvement: 0.002      # candidate ROC-AUC must beat incumbent by this
   max_allowed_degradation: 0.0         # never promote a candidate that is worse
   min_candidate_roc_auc: 0.85          # absolute floor regardless of the incumbent
-  max_p95_latency_ms: 50.0             # candidate must stay within the latency budget
+  # Latency is gated as a RATIO against the incumbent, measured back to back in the
+  # same process. An absolute millisecond budget is not portable between machines and
+  # is not stable on one machine under load -- during development a 50ms absolute
+  # budget rejected a candidate that was 2.4 points better and no slower, purely
+  # because the host was oversubscribed.
+  max_latency_ratio: 1.5
+  # Absolute ceiling, applied only when there is no incumbent to compare against.
+  max_p95_latency_ms: 50.0
   require_clean_validation: true       # training data must pass validation with 0 errors
   min_training_rows: 5000

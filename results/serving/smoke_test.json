@@ -1,0 +1,101 @@
+{
+  "cold_start_seconds": 1.742,
+  "health": {
+    "status": "ok",
+    "model_loaded": true,
+    "model_version": "1",
+    "uptime_seconds": 0.559,
+    "version": "0.1.0"
+  },
+  "model_info": {
+    "model_name": "adult-income-classifier",
+    "model_version": "1",
+    "model_alias": "production",
+    "model_source": "registry",
+    "run_id": "269a05c28efd41bc91eb54dfe60474f5",
+    "dataset_version": "adult-ingest-2-975c90344d56",
+    "code_version": "fa158c51a2a5",
+    "git_commit": "b209d19-dirty",
+    "training_fingerprint": "54122c6ae1215984557601e70e885b48e140668effbfbadc5ea9418ca76b797a",
+    "loaded_at": "2026-09-11T12:54:38.234829+00:00",
+    "load_seconds": 0.007161,
+    "input_columns": [
+      "age",
+      "workclass",
+      "education_num",
+      "marital_status",
+      "occupation",
+      "relationship",
+      "race",
+      "sex",
+      "capital_gain",
+      "capital_loss",
+      "hours_per_week",
+      "native_country"
+    ],
+    "model_features": [
+      "age",
+      "education_num",
+      "capital_gain",
+      "capital_loss",
+      "hours_per_week",
+      "net_capital",
+      "has_capital_flow",
+      "log_capital_gain",
+      "workclass",
+      "marital_status",
+      "occupation",
+      "relationship",
+      "race",
+      "sex",
+      "native_country",
+      "hours_band"
+    ],
+    "metrics": {
+      "validation_roc_auc": 0.93027,
+      "test_roc_auc": 0.926784
+    }
+  },
+  "prediction": {
+    "request_id": "65c1a85c-3dc6-46f6-8430-991e986c36e8",
+    "model_name": "adult-income-classifier",
+    "model_version": "1",
+    "model_alias": "production",
+    "threshold": 0.5,
+    "n_records": 1,
+    "predictions": [
+      {
+        "probability": 0.0012644311690223856,
+        "prediction": 0,
+        "label": "<=50K"
+      }
+    ],
+    "latency_ms": 13.105
+  },
+  "monitoring_summary": {
+    "enabled": true,
+    "window_seconds": null,
+    "n_predictions": 1879353,
+    "mean_probability": 0.241795,
+    "min_probability": 3.9e-05,
+    "max_probability": 0.999831,
+    "mean_latency_ms": 52.6615,
+    "by_model_version": {
+      "1": 1871753,
+      "2": 7600
+    },
+    "events": {
+      "validation_error": 5
+    },
+    "uptime_seconds": 1.546,
+    "served_model_version": "1"
+  },
+  "reload": {
+    "ok": true,
+    "from_version": "1",
+    "to_version": "1",
+    "changed": false,
+    "seconds": 0.009116,
+    "error": null
+  }
+}
