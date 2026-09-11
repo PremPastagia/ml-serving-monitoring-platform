@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+mlruns/
+mlflow.db
+artifacts/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/
+data/scenarios/
+*.egg-info/
+.DS_Store
+GATES.md
+.unlazy/

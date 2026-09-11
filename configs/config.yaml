@@ -1,0 +1,97 @@
+# Single configuration file for the whole platform.
+# Every script reads this; nothing hardcodes a path, threshold or seed.
+# The resolved config is hashed and logged with each training run, so a result can
+# always be traced back to the exact settings that produced it.
+
+project:
+  name: mlserve-adult-income
+  random_seed: 42
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  scenario_dir: data/scenarios
+  artifact_dir: artifacts
+  results_dir: results
+  prediction_db: artifacts/predictions.sqlite
+
+data:
+  # adult.data is split into train/validation; adult.test is the untouched holdout.
+  validation_fraction: 0.2
+  stratify: true
+
+model:
+  # HistGradientBoostingClassifier: the strongest scikit-learn tabular estimator that
+  # needs no external native dependency, handles the raw categoricals natively, and
+  # trains in seconds on 32k rows -- which keeps the reproducibility test cheap.
+  estimator: hist_gradient_boosting
+  params:
+    learning_rate: 0.1
+    max_iter: 200
+    max_leaf_nodes: 31
+    min_samples_leaf: 20
+    l2_regularization: 1.0
+    max_bins: 255
+    early_stopping: false
+  baseline:
+    # Logistic regression is trained alongside as a sanity floor: if the boosted model
+    # cannot beat a linear baseline, something is wrong with the pipeline, not the data.
+    estimator: logistic_regression
+    params:
+      C: 1.0
+      max_iter: 1000
+
+evaluation:
+  # ROC-AUC is the headline metric: the target is imbalanced (~24% positive) and the
+  # serving contract returns a probability, so a threshold-free ranking metric is the
+  # honest primary. PR-AUC is reported alongside because it is the one that actually
+  # degrades visibly when the positive class gets rarer under drift.
+  primary_metric: roc_auc
+  secondary_metrics: [pr_auc, accuracy, f1, brier, log_loss]
+  decision_threshold: 0.5
+
+mlflow:
+  tracking_uri: sqlite:///mlflow.db
+  artifact_location: file:./mlruns
+  experiment_name: adult-income
+  registered_model_name: adult-income-classifier
+
+serving:
+  host: 127.0.0.1
+  port: 8077
+  # "registry" loads the aliased version from the MLflow model registry;
+  # "file" loads a local joblib bundle (used by the container and by offline tests).
+  model_source: registry
+  model_alias: production
+  max_batch_size: 512
+  log_predictions: true
+  # Fraction of prediction feature vectors sampled into the monitoring store.
+  # 1.0 locally; a real deployment would lower this to bound write amplification.
+  feature_sample_rate: 1.0
+
+monitoring:
+  latency_buckets_seconds: [0.001, 0.0025, 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5]
+  prediction_histogram_buckets: [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95]
+
+drift:
+  # Thresholds are conventional operating points, not derived from this dataset.
+  # They are calibrated against the measured no-drift false-positive rate in
+  # DRIFT_DETECTION.md; the numbers there are what justify these values.
+  psi_warn: 0.1
+  psi_alert: 0.25
+  ks_alpha: 0.01
+  chi2_alpha: 0.01
+  n_bins: 10
+  # A dataset is declared drifted when at least this many features alert.
+  min_drifted_features: 1
+  reference_sample: 10000
+  window_size: 2000
+
+retraining:
+  # Acceptance criteria the candidate must satisfy before it replaces production.
+  min_absolute_improvement: 0.002      # candidate ROC-AUC must beat incumbent by this
+  max_allowed_degradation: 0.0         # never promote a candidate that is worse
+  min_candidate_roc_auc: 0.85          # absolute floor regardless of the incumbent
+  max_p95_latency_ms: 50.0             # candidate must stay within the latency budget
+  require_clean_validation: true       # training data must pass validation with 0 errors
+  min_training_rows: 5000
